@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  app:
+    shm_size: 4096m
+    build: "./build/app"
+    ports:
+      - '8080:8080'
+      - '5005:5005'
+    
+    volumes:
+      - "./app:/app"
+    
+    environment:
+      TZ: 'Asia/Tokyo'
+      GRADLE_OPTS: '-Dorg.gradle.jvmargs=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005'
+
+    command: >
+      sh -c '
+        chmod +x ./gradlew
+        ./gradlew joobyRun
+      '
+
+    working_dir: /app
+    
+    cap_add:
+      - SYS_ADMIN
+    security_opt:
+      - seccomp:unconfined
+    tty: true
+    
+    

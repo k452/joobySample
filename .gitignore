@@ -1,0 +1,8 @@
+/tmp
+
+/app/build/*
+/app/out/*
+/app/.gradle/*
+
+.idea/**/workspace.xml
+.idea/**/tasks.xml

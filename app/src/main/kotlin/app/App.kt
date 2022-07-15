@@ -6,7 +6,7 @@ import io.jooby.runApp
 class App : Kooby({
 
     get("/") {
-        "Welcome to Jooby in Docker!!"
+        "Welcome to Jooby in Docker!"
     }
 
     get("/hello/{name}") {
